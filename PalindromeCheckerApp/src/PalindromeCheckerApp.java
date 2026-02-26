@@ -1,26 +1,26 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
-    public static void main(){
-       String word = "Radar";
-       boolean ispalindrome = true;
-       char[]chars = word.toCharArray();
-       char start = 0;
-      int end = chars.length-1;
-     while( start < end ) {
-         if (word.charAt(end) != word.charAt(start)) {
-             ispalindrome = false;
-             break;
-         }
-         start++;
-         end--;
-     }
+    public static void main(String[] args) {
+        String word = "noon";
+        boolean isPalindrome = true;
+        Stack<Character> stack = new Stack<>();
 
-         if (ispalindrome) {
-             System.out.println(word + " is a Palindrome");
+        for (char c : word.toCharArray()) {
+            stack.push(c);
+        }
 
-         } else {
-             System.out.println(word + " in not a Palindrome");
-         }
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
 
-
-         }
+        if (isPalindrome) {
+            System.out.println(word + " is a Palindrome");
+        } else {
+            System.out.println(word + " is not a Palindrome");
+        }
     }
+}
